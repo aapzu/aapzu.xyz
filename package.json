@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "aapzu.xyz",
+  "homepage": "http://aapzu.xyz",
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore --fix .",
     "lint": "npm-run-all --parallel lint:*",
