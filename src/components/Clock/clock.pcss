@@ -1,0 +1,123 @@
+
+.clock {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+  
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  .container {
+    position: absolute;
+    transform-origin: 50% 50%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .markContainer {
+    .minuteMark {
+      width: 3px;
+      height: calc(50% - 5px);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: 0 0;
+      border-top: 10px solid black;
+
+      &:nth-child(5n + 1) {
+        border-top-width: 30px;
+      }
+      &:nth-child(15n + 1) {
+        border-top-width: 50px;
+      }
+    }
+  }
+
+  .hourArm,
+  .minuteArm,
+  .secondArm {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    animation-name: rotateAnim;
+    animation-iteration-count: infinite;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -100%);
+      transform-origin: 50% 100%;
+      border-radius: 50% 50% 0 0;
+    }
+  }
+
+  .hourArm{
+    animation-duration: 86400s;
+    animation-timing-function: steps(86400);
+    &:after {
+      width: 20px;
+      height: 20%;
+    }
+    &:before,
+    &:after {
+      background-color: #000;
+    }
+  }
+
+  .minuteArm{
+    animation-duration: 3600s;
+    animation-timing-function: steps(3600);
+    &:after {
+      width: 15px;
+      height: 30%;
+    }
+    &:before,
+    &:after {
+      background-color: #333;
+    }
+  }
+
+  .secondArm{
+    animation-duration: 60s;
+    animation-timing-function: steps(60);
+
+    &:after {
+      width: 10px;
+      height: 40%;
+    }
+
+    &:before,
+    &:after {
+      background-color: #999;
+    }
+  }
+}
+
+@keyframes rotateAnim {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
