@@ -28,7 +28,7 @@ export default class Clock extends Component {
 							{[...Array(60)].map((x, i) =>
 								<div key={i} className={styles.minuteMark} style={{
 									transform: `rotate(${i * 6}deg) translate(-50%, -100%)`
-								}} />
+								}}/>
 							)}
 						</div>
 						<div id="hourContainer" className={styles.container} ref={i => this.hourArm = i} style={{

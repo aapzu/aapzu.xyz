@@ -1,7 +1,11 @@
 
+body {
+  background-color: #000;
+}
+
 .clock {
   width: 100%;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 50%;
   position: relative;
   
@@ -28,7 +32,7 @@
       left: 50%;
       top: 50%;
       transform-origin: 0 0;
-      border-top: 10px solid black;
+      border-top: 10px solid white;
 
       &:nth-child(5n + 1) {
         border-top-width: 30px;
@@ -50,17 +54,9 @@
     animation-name: rotateAnim;
     animation-iteration-count: infinite;
 
-    &:before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-    }
     &:after {
+      animation-timing-function: steps(60);
+      animation-duration: 60s;
       content: '';
       position: absolute;
       left: 50%;
@@ -75,12 +71,10 @@
     animation-duration: 86400s;
     animation-timing-function: steps(86400);
     &:after {
-      width: 20px;
-      height: 20%;
-    }
-    &:before,
-    &:after {
-      background-color: #000;
+      animation: colorAnim1;
+      width: 12px;
+      height: 23%;
+      background-color: hsl(328, 50%, 36%);
     }
   }
 
@@ -88,12 +82,10 @@
     animation-duration: 3600s;
     animation-timing-function: steps(3600);
     &:after {
-      width: 15px;
+      animation: colorAnim2;
+      width: 11px;
       height: 30%;
-    }
-    &:before,
-    &:after {
-      background-color: #333;
+      background-color: hsl(127, 50%, 35%);
     }
   }
 
@@ -101,14 +93,26 @@
     animation-duration: 60s;
     animation-timing-function: steps(60);
 
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
     &:after {
       width: 10px;
-      height: 40%;
+      height: 35%;
     }
 
     &:before,
     &:after {
-      background-color: #999;
+      animation: colorAnim3;
+      background-color: hsl(3, 50%, 45%);
     }
   }
 }
@@ -119,5 +123,50 @@
   }
   to {
     transform: rotate(359deg);
+  }
+}
+
+@keyframes colorAnim1 {
+  0% {
+    background-color: hsl(328, 50%, 36%);
+  }
+  30% {
+    background-color: hsl(76, 50%, 36%);
+  }
+  70% {
+    background-color: hsl(220, 50%, 36%);
+  }
+  100% {
+    background-color: hsl(327, 50%, 36%);
+  }
+}
+
+@keyframes colorAnim2 {
+  0% {
+    background-color: hsl(127, 50%, 35%);
+  }
+  30% {
+    background-color: hsl(235, 50%, 36%);
+  }
+  70% {
+    background-color: hsl(19, 50%, 36%);
+  }
+  100% {
+    background-color: hsl(126, 50%, 36%);
+  }
+}
+
+@keyframes colorAnim3 {
+  0% {
+    background-color: hsl(3, 50%, 45%);
+  }
+  30% {
+    background-color: hsl(111, 50%, 45%);
+  }
+  70% {
+    background-color: hsl(255, 50%, 45%);
+  }
+  100% {
+    background-color: hsl(2, 50%, 45%);
   }
 }
