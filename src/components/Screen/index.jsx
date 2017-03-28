@@ -8,7 +8,8 @@ export default class Screen extends Component {
 	constructor() {
 		super()
 		this.state = {
-			screen: (new Array(5)).fill(undefined).map(() => (new Array(5)).fill(false))
+			screen: (new Array(5)).fill(undefined)
+				.map(() => (new Array(5)).fill(false))
 		}
 		this.drawLetter = this.drawLetter.bind(this)
 	}
@@ -42,7 +43,8 @@ export default class Screen extends Component {
 	drawLetter(e) {
 		const letter = e.key.toUpperCase()
 		const letterMap = letters[letter]
-		let map = (new Array(5)).fill(undefined).map(() => (new Array(5)).fill(false))
+		let map = (new Array(5)).fill(undefined)
+			.map(() => (new Array(5)).fill(false))
 		if (letterMap) {
 			e.target.value = letter
 			for (let l of letterMap) {
