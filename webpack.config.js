@@ -30,18 +30,6 @@ export default (config = {}) => {
 				},
 				{
 					test: /\.jsx?$/,
-					exclude: /node_modules/,
-					enforce: 'pre',
-					use: [{
-						loader: 'eslint-loader',
-						options: {
-							configFile: './.eslintrc.js',
-							failOnError: false
-						}
-					}]
-				},
-				{
-					test: /\.jsx?$/,
 					include: [
 						path.resolve(__dirname, "scripts"),
 						path.resolve(__dirname, "src"),

@@ -22,5 +22,6 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-	children: React.PropTypes.oneOfType([React.PropTypes.element, React.PropTypes.arrayOf(React.PropTypes.element)])
+	children: React.PropTypes.oneOfType([React.PropTypes.element, React.PropTypes.arrayOf(React.PropTypes.element)]),
+	className: React.PropTypes.string
 }

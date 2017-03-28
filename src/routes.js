@@ -9,11 +9,11 @@ import ScreenBuilder from './components/Screen/builder.jsx'
 
 export default (
 	<Router>
-        <Route component={ Page }>
-            <Route path="/" component={ App } />
-            <Route path="/clock" component={ Clock } />
-            <Route path="/screen/builder" component={ ScreenBuilder } />
-            <Route path="/screen" component={ Screen } />
-        </Route>
+		<Route component={ Page }>
+			<Route path="/" component={ App }/>
+			<Route path="/clock" component={ Clock }/>
+			<Route path="/screen/builder" component={ ScreenBuilder }/>
+			<Route path="/screen" component={ Screen }/>
+		</Route>
 	</Router>
 )

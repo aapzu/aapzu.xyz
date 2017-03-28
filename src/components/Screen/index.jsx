@@ -37,7 +37,7 @@ export default class Screen extends Component {
 						))}
 					</div>
 				))}
-				<Input className={styles.letterInput} onKeyPress={this.drawLetter} />
+				<Input className={styles.letterInput} onKeyPress={this.drawLetter} autoFocus="true"/>
 			</Col>
 		)
 	}
