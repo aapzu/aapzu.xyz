@@ -3,11 +3,12 @@ import { Col } from 'reactstrap'
 import Pixel from './Pixel'
 import styles from './screen.pcss'
 
-export default class Screen extends Component {
+export default class Builder extends Component {
 	constructor() {
 		super()
 		this.state = {
-			screen: Array(5).fill(Array(5).fill(false))
+			screen: (new Array(5)).fill(undefined)
+				.map(() => (new Array(5)).fill(false))
 		}
 	}
 	

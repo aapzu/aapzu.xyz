@@ -12,6 +12,7 @@ export default class Screen extends Component {
 				.map(() => (new Array(5)).fill(false))
 		}
 		this.drawLetter = this.drawLetter.bind(this)
+		this.setPixel = this.setPixel.bind(this)
 	}
 	
 	render() {
@@ -31,16 +32,18 @@ export default class Screen extends Component {
 								y={rowIndex}
 								key={`pixel${rowIndex}${pixelIndex}`}
 								state={ this.state.screen[rowIndex][pixelIndex] }
+								onClick={() => this.props.onPixelClick && this.props.onPixelClick(pixelIndex, rowIndex)}
 							/>
 						))}
 					</div>
 				))}
-				<Input className={styles.letterInput} onKeyUp={this.drawLetter} />
+				<Input className={styles.letterInput} onKeyPress={this.drawLetter} />
 			</Col>
 		)
 	}
 	
 	drawLetter(e) {
+		e.preventDefault()
 		const letter = e.key.toUpperCase()
 		const letterMap = letters[letter]
 		let map = (new Array(5)).fill(undefined)
@@ -63,9 +66,14 @@ export default class Screen extends Component {
 		})
 	}
 	
-	setPixel(x, y, state) {
+	setPixel(x, y) {
 		let newScreen = this.state.screen
+		const state = !(this.state.screen[y][x])
 		newScreen[y].splice(x, 1, state)
 		this.setMap(newScreen)
 	}
+}
+
+Screen.propTypes = {
+	onPixelClick: React.PropTypes.func
 }
