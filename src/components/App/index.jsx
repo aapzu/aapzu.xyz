@@ -8,7 +8,12 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className="container-fluid container">
-				<Link to="clock">Clock</Link>
+				<div>
+					<Link to="clock">Clock</Link>
+				</div>
+				<div>
+					<Link to="screen">Screen</Link>
+				</div>
 			</div>
 		)
 	}

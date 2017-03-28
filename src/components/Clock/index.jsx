@@ -15,7 +15,7 @@ export default class Clock extends Component {
 			second: `rotate(${this.mountDate.getSeconds() / 60 * 360}deg)`
 		}
 		return (
-			<div className="container-fluid container">
+			<div className={`container-fluid container ${styles.clockContainer}`}>
 				<Col xs={12} md={{
 					size: 8,
 					offset: 2

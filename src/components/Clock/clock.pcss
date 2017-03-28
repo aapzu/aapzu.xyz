@@ -1,14 +1,17 @@
 
-body {
-  background-color: #000;
+.clockContainer {
+  > div {
+    margin-top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .clock {
   width: 100%;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 50%;
   position: relative;
-  
+
   &:after {
     content: '';
     display: block;
@@ -32,7 +35,7 @@ body {
       left: 50%;
       top: 50%;
       transform-origin: 0 0;
-      border-top: 10px solid white;
+      border-top: 10px solid black;
 
       &:nth-child(5n + 1) {
         border-top-width: 30px;

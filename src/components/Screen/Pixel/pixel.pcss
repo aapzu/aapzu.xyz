@@ -1,0 +1,20 @@
+
+@import '../../../variables.pcss';
+
+.pixel {
+  flex: 1;
+  position: relative;
+  border: 1px solid black;
+
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  &.on {
+    background: var(--highlightColor);
+  }
+
+  transition: background ease 0.6s;
+}
