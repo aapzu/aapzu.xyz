@@ -1,79 +1,111 @@
 import React, { Component } from 'react'
-import { Col, Input } from 'reactstrap'
-import Pixel from './Pixel'
-import letters from '../../../config/letters.js'
+import { Col, Row, Button, FormGroup, Form, Input, Label } from 'reactstrap'
+import Switch from 'react-bootstrap-switch'
+import 'react-bootstrap-switch/dist/css/bootstrap3/react-bootstrap-switch.min.css'
+import Bitmap from './CharacterBitmap'
 import styles from './screen.pcss'
 
 export default class Screen extends Component {
 	constructor() {
 		super()
 		this.state = {
-			screen: (new Array(5)).fill(undefined)
-				.map(() => (new Array(5)).fill(false))
+			char: '',
+			mode: 'text'
 		}
-		this.drawLetter = this.drawLetter.bind(this)
-		this.setPixel = this.setPixel.bind(this)
+		this.drawChars = this.drawChars.bind(this)
 	}
 	
 	render() {
 		return (
-			<Col md={{
-				size: 6,
-				offset: 3
-			}} lg={{
-				size: 4,
-				offset: 4
-			}} className={styles.screen}>
-				{this.state.screen.map((row, rowIndex) => (
-					<div className={styles.pixelRow} key={`row${rowIndex}`}>
-						{row.map((pixel, pixelIndex) => (
-							<Pixel
-								x={pixelIndex}
-								y={rowIndex}
-								key={`pixel${rowIndex}${pixelIndex}`}
-								state={ this.state.screen[rowIndex][pixelIndex] }
-								onClick={() => this.props.onPixelClick && this.props.onPixelClick(pixelIndex, rowIndex)}
-							/>
-						))}
-					</div>
-				))}
-				<Input className={styles.letterInput} onKeyPress={this.drawLetter} autoFocus="true"/>
-			</Col>
+			<div className={[styles.screen, 'container'].join(' ')}>
+				<Row>
+					<Col md={{
+						size: 6,
+						offset: 3
+					}}>
+						<Bitmap char={this.state.char}/>
+					</Col>
+				</Row>
+				<Row className="align-items-center">
+					<Col md={3} xs={12} className={styles.switcherContainer}>
+						<Switch animation={true} onText="Text" offText="Type" onColor="default" onChange={(el, state) => {
+							this.setState({
+								mode: state ? 'text' : 'type'
+							})
+						}}/>
+					</Col>
+					<Col md={6} xs={12} className={styles.inputContainer}>
+						<Row>
+							{this.state.mode === 'text' ?
+								<Form inline onSubmit={this.drawChars} className={styles.optionForm}>
+									<Col xs={12}>
+										<FormGroup>
+											<Label>Characters</Label>
+											<Input
+												className={styles.letterInput}
+												getRef={i => this.input = i}
+												autoFocus="true"
+											/>
+										</FormGroup>
+									</Col>
+									<Col xs={6}>
+										<FormGroup>
+											<Label>Interval (ms)</Label>
+											<Input
+												type="number"
+												placeholder="1000"
+												getRef={i => this.intervalInput = i}
+											/>
+										</FormGroup>
+									</Col>
+									<Col xs={6}>
+										<FormGroup>
+											<Label>&nbsp;</Label>
+											<Button>Start</Button>
+										</FormGroup>
+									</Col>
+								</Form>
+								:
+								<Col xs={{
+									size: 6,
+									offset: 3
+								}}>
+									<FormGroup className={styles.charInputGroup}>
+										<Label>Type some characters</Label>
+										<Input
+										    autoFocus={true}
+										    onKeyPress={e => {
+										        e.preventDefault()
+										        this.setState({
+												    char: e.key
+											    })
+											    e.target.value = e.key
+										    }}
+										    className={styles.charInput}
+										/>
+									</FormGroup>
+								</Col>
+							}
+						</Row>
+					</Col>
+				</Row>
+			</div>
 		)
 	}
 	
-	drawLetter(e) {
+	drawChars(e) {
 		e.preventDefault()
-		const letter = e.key.toUpperCase()
-		const letterMap = letters[letter]
-		let map = (new Array(5)).fill(undefined)
-			.map(() => (new Array(5)).fill(false))
-		if (letterMap) {
-			e.target.value = letter
-			for (let l of letterMap) {
-				map[l[1]][l[0]] = true
+		const string = this.input.value
+		const draw = (i) => {
+			this.setState({
+				char: string[i] || ' '
+			})
+			if (i < string.length) {
+				setTimeout(() => {
+					draw(i + 1)
+				}, this.intervalInput.value || 1000)
 			}
 		}
-		this.setMap(map)
+		draw(0)
 	}
-	
-	setMap(map) {
-		if (map.length != 5 && map.find(i => i.length != 5) !== undefined) {
-			throw 'Invalid map!'
-		}
-		this.setState({
-			screen: map.map(row => row.map(item => !!item))
-		})
-	}
-	
-	setPixel(x, y) {
-		let newScreen = this.state.screen
-		const state = !(this.state.screen[y][x])
-		newScreen[y].splice(x, 1, state)
-		this.setMap(newScreen)
-	}
-}
-
-Screen.propTypes = {
-	onPixelClick: React.PropTypes.func
 }
