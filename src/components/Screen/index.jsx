@@ -58,7 +58,7 @@ export default class Screen extends Component {
 											/>
 										</FormGroup>
 									</Col>
-									<Col xs={6}>
+									<Col xs={6} className={styles.startButtonContainer}>
 										<FormGroup>
 											<Label>&nbsp;</Label>
 											<Button>Start</Button>

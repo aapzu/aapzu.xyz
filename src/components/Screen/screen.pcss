@@ -15,8 +15,13 @@
     display: flex;
     flex-direction: column;
 
-    button {
-      display: block;
+    .startButtonContainer {
+      > * {
+        display: block;
+      }
+      label {
+        width: 100%;
+      }
     }
 
     input {
