@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Col, Row, Button, FormGroup, Form, Input, Label } from 'reactstrap'
 import Switch from 'react-bootstrap-switch'
 import 'react-bootstrap-switch/dist/css/bootstrap3/react-bootstrap-switch.min.css'
-import Bitmap from './CharacterBitmap'
+import Bitmap from '../CharacterBitmap'
 import styles from './screen.pcss'
 
 export default class Screen extends Component {

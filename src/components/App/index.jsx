@@ -14,6 +14,9 @@ export default class App extends Component {
 				<div>
 					<Link to="screen">Screen</Link>
 				</div>
+				<div>
+					<Link to="countdown">Countdown</Link>
+				</div>
 			</div>
 		)
 	}

@@ -1,0 +1,35 @@
+
+@import '../../../variables.pcss';
+
+.settingsContainer {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.settingContainer {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+}
+
+.menuContainer {
+  position: absolute;
+  background: #FFFFFF;
+  top: 100%;
+  right: 0;
+  border-radius: 2px;
+
+  textarea {
+    resize: none;
+  }
+}
+
+.linkMenuContainer {
+  width: 480px;
+}
+
+@media (--xs) {
+  .linkMenuContainer {
+    width: 350px;
+  }
+}

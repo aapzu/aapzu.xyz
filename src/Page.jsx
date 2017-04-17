@@ -11,7 +11,10 @@ import Footer from './components/Footer'
 export default class Page extends Component {
 	render() {
 		return (
-			<div id="page-content-wrapper">
+			<div id="page-content-wrapper" style={{
+				width: '100%',
+				minHeight: '100%'
+			}}>
 				<DefaultHeadMeta />
 				<Nav />
 					{this.props.children}

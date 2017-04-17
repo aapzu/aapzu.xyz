@@ -26,7 +26,15 @@ const DefaultHeadMeta = (props) => (
 				content: 'width=device-width, initial-scale=1',
 			}] }
 		/>
-		<style>{ '@-ms-viewport { width: device-width; } ' }</style>
+		<style>{`
+			@-ms-viewport {
+				width: device-width;
+			}
+			#phenomic {
+				width: 100%;
+				height: 100%;
+			}
+		`}</style>
 		<link rel='icon' href='img/favicon.ico'/>
 	</div>
 )
