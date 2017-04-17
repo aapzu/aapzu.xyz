@@ -81,6 +81,7 @@ export default class CountdownSettings extends Component {
                         <div className={styles.menuContainer}>
                             <InputMoment
                                 moment={this.state.moment}
+                                value={this.state.date}
                                 onChange={this.handleChange}
                                 onSave={this.handleSave}
                                 prevMonthIcon="fa fa-caret-left" // default

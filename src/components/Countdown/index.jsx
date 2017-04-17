@@ -1,5 +1,6 @@
 
 import React, {Component, PropTypes} from 'react'
+// import {History} from 'react-router'
 import {Row} from 'reactstrap'
 import styles from './countdown.pcss'
 
@@ -48,7 +49,7 @@ export default class Countdown extends Component {
 	onDateChange(date) {
 		this.setDateAndLink(date)
 		setTimeout(() => {
-			window.history.pushState('', '', this.state.link)
+            // History.pushState('', '', this.state.link)
 		})
 	}
 	setDateAndLink(date) {
