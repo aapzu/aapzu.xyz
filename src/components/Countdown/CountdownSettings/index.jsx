@@ -1,6 +1,6 @@
 
 import React, {Component, PropTypes} from 'react'
-import {Input, InputGroup, InputGroupAddon} from 'reactstrap'
+import {InputGroup, InputGroupAddon} from 'reactstrap'
 import ClipboardButton from 'react-clipboard.js'
 import moment from 'moment'
 import 'input-moment/dist/input-moment.css'
@@ -66,11 +66,18 @@ export default class CountdownSettings extends Component {
                         <div className={[styles.menuContainer, styles.linkMenuContainer].join(' ')}>
                             <InputGroup>
                                 <InputGroupAddon>
-                                    <FontAwesome name="external-link">
+                                    <FontAwesome name="external-link" title="Copy link">
                                         <ClipboardButton component="a" data-clipboard-text={this.props.link} />
                                     </FontAwesome>
                                 </InputGroupAddon>
-                                <Input readOnly className={styles.link} value={this.props.link}/>
+                                {/* Reactstrap Input doesn't support onBlur */}
+                                <input
+                                    readOnly
+                                    className={`form-control`}
+                                    value={this.props.link}
+                                    onBlur={() => this.openOrCloseLink(false)}
+                                    ref={i => i && i.select()}
+                                />
                             </InputGroup>
                         </div>
                     )}
@@ -96,6 +103,7 @@ export default class CountdownSettings extends Component {
 }
 
 const {number, func} = PropTypes
+
 CountdownSettings.propTypes = {
     left: number,
     right: number,

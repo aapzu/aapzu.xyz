@@ -19,7 +19,6 @@ export default class Pixel extends Component {
 }
 
 const {bool, number, string, func} = PropTypes
-
 Pixel.propTypes = {
 	state: bool,
 	x: number,

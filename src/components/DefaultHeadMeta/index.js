@@ -39,13 +39,15 @@ const DefaultHeadMeta = (props) => (
 	</div>
 )
 
+const {arrayOf, object} = PropTypes
+
 DefaultHeadMeta.propTypes = {
-	meta: React.PropTypes.arrayOf(React.PropTypes.object),
-	scripts: React.PropTypes.arrayOf(React.PropTypes.object),
+	meta: arrayOf(object),
+	scripts: arrayOf(object),
 }
 
 DefaultHeadMeta.contextTypes = {
-	metadata: PropTypes.object.isRequired,
+	metadata: object.isRequired,
 }
 
 export default DefaultHeadMeta

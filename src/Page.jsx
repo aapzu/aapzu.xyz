@@ -1,30 +1,26 @@
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
 
 import DefaultHeadMeta from './components/DefaultHeadMeta'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
+
+import styles from './general-styles.pcss'
 
 export default class Page extends Component {
 	render() {
 		return (
-			<div id="page-content-wrapper" style={{
-				width: '100%',
-				minHeight: '100%'
-			}}>
+			<div id={styles.pageContentWrapper}>
 				<DefaultHeadMeta />
-				<Nav />
-					{this.props.children}
-				<Footer />
+				{this.props.children}
 			</div>
 		)
 	}
 }
 
+const {element, arrayOf, oneOfType, string} = PropTypes
 Page.propTypes = {
-	children: React.PropTypes.oneOfType([React.PropTypes.element, React.PropTypes.arrayOf(React.PropTypes.element)]),
-	className: React.PropTypes.string
+	children: oneOfType([element, arrayOf(element)]),
+	className: string
 }
