@@ -27,7 +27,7 @@
     top: 0;
     left: 0;
     backface-visibility: hidden;
-    border: 1px solid #333;
+    border: 1px solid;
     border-radius: 2px;
   }
 
@@ -45,12 +45,16 @@
   .pixelFront {
     z-index: 2;
     background: #FFFFFF;
+    border-color: #bebebe;
+    color: #000;
   }
 
   .pixelBack {
     z-index: 1;
-    background: var(--highlightColor);
+    background: #2d1218;
     transform: rotateY(180deg);
+    border-color: #333;
+    color: #FFF;
 
     .pixelLabel {
       transform: rotateX(180deg) rotateY(180deg);
