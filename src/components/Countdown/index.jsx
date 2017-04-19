@@ -7,6 +7,8 @@ import moment from 'moment'
 import CountdownSettings from './CountdownSettings'
 import Bitmap from '../CharacterBitmap'
 
+import url from 'url'
+
 const getOrigin = () => typeof window !== 'undefined' ? window.location.origin : ''
 
 export default class Countdown extends Component {
@@ -30,7 +32,7 @@ export default class Countdown extends Component {
 		setTimeout(this.count, Date.now() % 1000)
 	}
 	getLink(date) {
-		return `${getOrigin()}${this.props.location.pathname}?date=${date}`
+        return `${url.resolve(getOrigin(), this.props.location.pathname)}?date=${date}`
 	}
 	getDuration() {
         const now = moment()
@@ -47,7 +49,7 @@ export default class Countdown extends Component {
 		this.setDateAndLink(date)
 		setTimeout(() => {
 			console.log(this.state)
-            this.context.router.replace(this.state.link)
+            this.context.router.push(this.state.link)
 		})
 	}
 	setDateAndLink(date) {
