@@ -43,7 +43,7 @@ export default class Countdown extends Component {
 		this.setState({
 			duration: this.getDuration()
 		})
-		setTimeout(() => this.count(), 1000)
+		setTimeout(() => this.count(), 100)
 	}
 	onDateChange(date) {
 		this.setDateAndLink(date)
