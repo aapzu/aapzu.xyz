@@ -17,6 +17,12 @@ export default class App extends Component {
 				<div>
 					<Link to="countdown">Countdown</Link>
 				</div>
+				<div>
+					<Link to="animatedtable">Animated Table (not ready)</Link>
+				</div>
+				<div>
+					<Link to="aapzu">Text</Link>
+				</div>
 			</div>
 		)
 	}

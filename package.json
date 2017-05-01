@@ -3,12 +3,8 @@
   "name": "aapzu.xyz",
   "homepage": "http://aapzu.xyz",
   "scripts": {
-    "lint:js": "eslint --ignore-path .gitignore --fix .",
-    "lint": "npm-run-all --parallel lint:*",
     "start": "phenomic start",
-    "build": "phenomic build",
-    "pretest": "npm run lint",
-    "test": "npm run build"
+    "build": "phenomic build"
   },
   "phenomic": {
     "CNAME": false
@@ -99,6 +95,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "css-loader": "^0.25.0",
     "css-mqpacker": "^5.0.1",
+    "deep-equal": "latest",
     "eslint": "^3.7.1",
     "eslint-loader": "^1.6.3",
     "eslint-plugin-react": "^6.4.0",
@@ -109,6 +106,7 @@
     "history": "^2.0.0",
     "input-moment": "^0.3.2",
     "json-loader": "^0.5.2",
+    "lodash": "latest",
     "moment": "^2.18.1",
     "npm-run-all": "^1.7.0",
     "phenomic": "^0.20.4",
@@ -124,6 +122,8 @@
     "raw-loader": "^0.5.1",
     "rc-scroll-anim": "^0.6.5",
     "react": "15.2.1",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-addons-transition-group": "^15.5.2",
     "react-bootstrap-switch": "^15.0.4",
     "react-clipboard.js": "^1.0.1",
     "react-dom": "15.2.1",
@@ -139,8 +139,12 @@
     "stylelint": "^7.2.0",
     "url": "^0.11.0",
     "url-loader": "^0.5.8",
+    "velocity-animate": "^1.5.0",
     "warning": "^3.0.0",
     "webpack": "^2.2.1",
     "whatwg-fetch": "^0.11.0"
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.21.0"
   }
 }
