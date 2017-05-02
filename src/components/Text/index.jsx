@@ -2,33 +2,53 @@
 import React, {Component, PropTypes} from 'react'
 import styles from './text.pcss'
 
+// For phenomic
+if (typeof document === 'undefined') {
+    var document = {
+        body: {},
+        addEventListener: () => {},
+        removeEventListener: () => {}
+    }
+}
+
 export default class Text extends Component {
     constructor() {
         super()
         this.state = {
             charPositions: {},
-            mousePosition: {},
+            mousePosition: {
+                left: document.body.clientWidth / 2,
+                top: document.body.clientHeight / 2,
+            },
             textShadows: {},
             blurRadius: 10
         }
         this.calculateShadow = this.calculateShadow.bind(this)
+        this.onMouseMove = this.onMouseMove.bind(this)
     }
     componentDidMount() {
-        document.addEventListener('mousemove', e => {
-            const mousePosition = {
-                top: e.clientY,
-                left: e.clientX
-            }
-            const textShadows = {}
-            Object.keys(this.refs).forEach(key => {
-                textShadows[key] = this.calculateShadow(this.refs[key])
-            })
-            this.setState({
-                mousePosition: mousePosition,
-                textShadows: textShadows
-            })
+        this.onMouseMove({
+            clientX: document.body.clientWidth / 2,
+            clientY: document.body.clientHeight / 2,
         })
-        
+        document.addEventListener('mousemove', this.onMouseMove)
+    }
+    componentWillUnmount() {
+        document.removeEventListener('mousemove', this.onMouseMove)
+    }
+    onMouseMove(e) {
+        const mousePosition = {
+            top: e.clientY,
+            left: e.clientX
+        }
+        const textShadows = {}
+        Object.keys(this.refs).forEach(key => {
+            textShadows[key] = this.calculateShadow(this.refs[key])
+        })
+        this.setState({
+            mousePosition,
+            textShadows
+        })
     }
     calculateShadow(char) {
         const charPosition = char.getBoundingClientRect()

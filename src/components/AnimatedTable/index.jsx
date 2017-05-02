@@ -1,8 +1,15 @@
 
 import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
-import AnimatedTable from '../../util/animatedTable'
 import _ from 'lodash'
+
+let AnimatedTable = function() {
+    this.moveRow = () => {}
+}
+
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    AnimatedTable = require('../../util/animatedTable').default
+}
 
 const {string, oneOfType, element, arrayOf} = PropTypes
 export default class AnimatedTableReact extends Component {

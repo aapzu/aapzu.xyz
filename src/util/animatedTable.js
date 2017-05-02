@@ -62,16 +62,18 @@ export default class AnimatedTable {
         }
         
         const toY = rowList[to].getBoundingClientRect().top
-        Velocity.animate(clonedRow, {
-            top: toY
-        }, {
-            duration: this.options.duration,
-            easing: this.options.easing,
-            complete: () => {
-                delete this.clonedRowsByKey[key]
-                clonedRow.parentNode.removeChild(clonedRow)
-                row.style.color = textColor
-            }
-        })
+        if (typeof window !== 'undefined') {
+            Velocity.animate(clonedRow, {
+                top: toY
+            }, {
+                duration: this.options.duration,
+                easing: this.options.easing,
+                complete: () => {
+                    delete this.clonedRowsByKey[key]
+                    clonedRow.parentNode.removeChild(clonedRow)
+                    row.style.color = textColor
+                }
+            })
+        }
     }
 }
