@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router'
 
 import Page from './Page'
 import App from './components/App'
@@ -10,7 +10,7 @@ import TableDemo from './components/TableDemo'
 import Text from './components/Text'
 
 export default (
-	<Router>
+	<Router history={browserHistory}>
 		<Route component={ Page }>
 			<Route path="/" component={ App }/>
 			<Route path="/clock" component={ Clock }/>

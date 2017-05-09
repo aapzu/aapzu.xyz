@@ -31,6 +31,9 @@ export default class Countdown extends Component {
 	componentDidMount() {
 		setTimeout(this.count, Date.now() % 1000)
 	}
+	componentWillUnmount() {
+		clearTimeout(this.countTimeout)
+	}
 	getLink(date) {
         return `${url.resolve(getOrigin(), this.props.location.pathname)}?date=${date}`
 	}
@@ -43,7 +46,7 @@ export default class Countdown extends Component {
 		this.setState({
 			duration: this.getDuration()
 		})
-		setTimeout(() => this.count(), 100)
+		this.countTimeout = setTimeout(() => this.count(), 100)
 	}
 	onDateChange(date) {
 		this.setDateAndLink(date)

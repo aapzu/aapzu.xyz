@@ -2,15 +2,6 @@
 import React, {Component, PropTypes} from 'react'
 import styles from './text.pcss'
 
-// For phenomic
-if (typeof document === 'undefined') {
-    var document = {
-        body: {},
-        addEventListener: () => {},
-        removeEventListener: () => {}
-    }
-}
-
 export default class Text extends Component {
     constructor() {
         super()
@@ -21,7 +12,7 @@ export default class Text extends Component {
                 top: document.body.clientHeight / 2,
             },
             textShadows: {},
-            blurRadius: 10
+            blurRadius: 0
         }
         this.calculateShadow = this.calculateShadow.bind(this)
         this.onMouseMove = this.onMouseMove.bind(this)

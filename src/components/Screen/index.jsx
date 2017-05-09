@@ -93,6 +93,10 @@ export default class Screen extends Component {
 		)
 	}
 	
+	componentWillUnmount() {
+		clearTimeout(this.timeout)
+	}
+	
 	drawChars(e) {
 		e.preventDefault()
 		const string = this.input.value
@@ -101,7 +105,7 @@ export default class Screen extends Component {
 				char: string[i] || ' '
 			})
 			if (i < string.length) {
-				setTimeout(() => {
+				this.timeout = setTimeout(() => {
 					draw(i + 1)
 				}, this.intervalInput.value || 1000)
 			}

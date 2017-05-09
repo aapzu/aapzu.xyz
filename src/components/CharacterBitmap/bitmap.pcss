@@ -10,7 +10,7 @@
 
   .pixelRow {
     flex: 1;
-    display: flex;
+    display: -webkit-box; /* Why this works but 'flex' does not? */
     flex-direction: row;
   }
 }
