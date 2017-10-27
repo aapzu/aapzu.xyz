@@ -4,7 +4,9 @@
   "homepage": "http://aapzu.xyz",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server",
-    "build": "node_modules/.bin/webpack"
+    "build": "node_modules/.bin/webpack",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
@@ -69,6 +71,8 @@
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.5",
     "webpack-notifier": "^1.5.0",
-    "whatwg-fetch": "^0.11.0"
-  }
+    "whatwg-fetch": "^0.11.0",
+    "snyk": "^1.46.0"
+  },
+  "snyk": true
 }
