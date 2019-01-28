@@ -9,7 +9,7 @@ import Bitmap from '../CharacterBitmap'
 
 import url from 'url'
 
-const getOrigin = () => typeof window !== 'undefined' ? window.location.origin : ''
+const getOrigin = () => window.location.origin
 
 export default class Countdown extends Component {
 	constructor(props) {

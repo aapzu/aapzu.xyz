@@ -14,9 +14,26 @@ export default class TableDemo extends Component {
                 C: i
             }))
         }
+        this.i = 5
+    
+        this.addRandom = this.addRandom.bind(this)
         this.switchRandom = this.switchRandom.bind(this)
         this.moveRandom = this.moveRandom.bind(this)
         this.deleteRandom = this.deleteRandom.bind(this)
+    }
+    addRandom() {
+        const item = {
+            A: `rowNumber${this.i}`,
+            B: `anotherColumn${this.i}`,
+            C: this.i
+        }
+        let list = [...this.state.list]
+        const rand = Math.floor(this.state.list.length * Math.random())
+        list.splice(rand, 0, item)
+        this.setState({
+            list
+        })
+        this.i++
     }
     switchRandom() {
         const len = this.state.list.length
@@ -81,6 +98,7 @@ export default class TableDemo extends Component {
                         ))}
                     </tbody>
                 </AnimatedTable>
+                <button onClick={this.addRandom}>Add random</button>
                 <button onClick={this.switchRandom}>Switch random</button>
                 <button onClick={this.moveRandom}>Move random</button>
                 <button onClick={this.deleteRandom}>Delete random</button>

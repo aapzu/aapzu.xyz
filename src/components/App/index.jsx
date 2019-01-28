@@ -23,6 +23,9 @@ export default class App extends Component {
 				<div>
 					<Link to="aapzu">Text</Link>
 				</div>
+				<div>
+					<Link to="imageColorSort">Image Color Sort</Link>
+				</div>
 			</div>
 		)
 	}
